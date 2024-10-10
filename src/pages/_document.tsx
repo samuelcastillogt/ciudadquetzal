@@ -38,6 +38,9 @@ export default function Document() {
         <Main />
         <NextScript />
       </body>
+      <footer>
+        <p>Una pagina de <a href="https://naughtydevgt.github.io/">Nauthy Dev</a> 2024</p>
+      </footer>
     </Html>
   );
 }
