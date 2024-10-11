@@ -1,3 +1,4 @@
+import { apiService } from '@/services/api.service';
 import { useStore } from '@/store'
 import Head from 'next/head';
 import { useRouter, useParams } from 'next/navigation'
@@ -7,17 +8,21 @@ function HtmlRender({ htmlString }:any) {
     <div dangerouslySetInnerHTML={{ __html: htmlString }} />
   );
 }
-
-function Post() {
+export async function getServerSideProps(datal:any){
+  const data = await apiService.getPosts()
+  console.log(data)
+  return { props: { data }}
+}
+function Post({data}:any) {
   const route = useParams()
   const [post, setPost] = useState<any>(undefined)
   const [desc, setDesc] = useState<string>("Bienvenidos al Blog sobre Ciudad Quetzal.")
-  const  {posts} = useStore((state:any )=> state)
+  console.log(data)
 
   useEffect(() => {
-    if(posts.length > 0){
-      const result = posts.find((i:any)=> i.data.id == route.post)
-      console.log(result.data.content)
+    if(data.length > 0){
+      const result = data.find((i:any)=> i.data.id == route.post)
+      console.log("aqui"+result.data.content)
       if(result){
         const match = result.data.content.match(/<p>(.*?)<\/p>/i)
         const descripcion = match[1].replace(/<\/?[^>]+(>|$)/g, "")
@@ -26,12 +31,13 @@ function Post() {
       }
 
     }
-  }, [posts])
+  }, [])
   return (
     <>
     <Head>
       <title>{post && post.title}</title>
       <meta name="description" content={post && desc}/>
+      <link rel='image_src' href={post.img}/>
     </Head>
     <div className='p-5 flex justify-center items-center post-body'>{post && <HtmlRender htmlString={post.content} />}</div>
     </>
