@@ -18,7 +18,7 @@ function index() {
         {
             categories.length > 0 && <select onChange={e => setFiltro(e.target.value)} className='rounded text-2xl p-5'>
                 <option key="todos" value="todos">Todos</option>
-                {categories.map(i => <option key={i} value={i}>{i}</option>)}
+                {categories.map((i:any) => <option key={i} value={i}>{i}</option>)}
             </select>
         }
 
