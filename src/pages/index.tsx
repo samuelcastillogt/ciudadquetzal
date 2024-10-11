@@ -17,7 +17,7 @@ const data = [
   {
     title: "Mercadito Digital",
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJPPEp20h1cYB3-lltdK_w2IdRtYjEpDzGtw&s",
-    url: "#",
+    url: "/mercadito",
   },
   {
     title: "Imprenta aqui en la Quetzal",
