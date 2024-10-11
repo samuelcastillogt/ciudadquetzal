@@ -4,7 +4,6 @@ import { useStore } from '@/store'
 import { apiService } from '@/services/api.service'
 import Head from 'next/head'
 export async function getServerSideProps(datal:any){
-    console.log(datal.query.id)
     const {data}:any = await apiService.getBusines(datal.query.id)
     return { props: { data }}
 }

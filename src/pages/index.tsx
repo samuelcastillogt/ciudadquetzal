@@ -24,6 +24,11 @@ const data = [
     img: "https://gestagrup.com/wp-content/uploads/2017/02/imprenta-barcelona.jpg",
     url: "#",
   },
+  {
+    title: "Nuestro Blog",
+    img: "https://gestagrup.com/wp-content/uploads/2017/02/imprenta-barcelona.jpg",
+    url: "/blog",
+  },
 ];
 export default function Home() {
   return (
