@@ -3,6 +3,11 @@
     font-weight: bold;
     text-align: center;
 }
+.post-body h3{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
 .post-body img{
     display: flex;
     margin: 0 auto;

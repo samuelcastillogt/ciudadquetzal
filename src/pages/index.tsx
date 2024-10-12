@@ -2,6 +2,7 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import Hero from "@/components/Hero";
 import Slider from "@/components/Slider";
+import Header from "@/components/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,13 +34,6 @@ const data = [
 export default function Home() {
   return (
     <div className={`${geistSans.variable} ${geistMono.variable}`}>
-      <div className="header">
-        <img
-          alt="ciudad quetzal"
-          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggZrG_auFVoULXLv1P1Eflu9B1Y68e-LjqoriWM2e49D9Lo95Cl4pxqIvAN3MykIxAatdiVeiskR19Sn9_uKtHBaeHQ2RAqpuRdXLzC6heezuTvvK5_RtWREaW0dqwrc8VKAEtItkF0X_t6GtghjHKmfOV44qsjEoF7RVVB-8xQWCnwUxgQ_7X6_IXbFI/s500/adaptive-icon2-removebg-preview.png"
-        />
-        <h1 className="text-white font-bold text-2xl"> Ciudad Quetzal</h1>
-      </div>
       <Slider posts={data} />
       <div className="p-5 text-center">
         <p>

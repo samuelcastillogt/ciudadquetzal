@@ -1,7 +1,10 @@
+import Header from "@/components/Header";
+import NaveMenu from "@/components/NaveMenu";
 import { Html, Head, Main, NextScript } from "next/document";
+import { useStore } from "@/store";
 
 export default function Document() {
-  
+  const {menu} = useStore((state:any)=> state)
   return (
     <Html lang="es">
            <Head>

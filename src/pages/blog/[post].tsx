@@ -19,7 +19,6 @@ function Post({data}:any) {
   useEffect(() => {
     if(data.length > 0){
       const result = data.find((i:any)=> i.data.id == route.post)
-      console.log("aqui"+result.data.content)
       if(result){
         const match = result.data.content.match(/<p>(.*?)<\/p>/i)
         const descripcion = match[1].replace(/<\/?[^>]+(>|$)/g, "")
@@ -36,7 +35,7 @@ function Post({data}:any) {
       <meta name="description" content={post && desc}/>
       <link rel='image_src' href={post && post.img}/>
     </Head>
-    <div className='p-5 flex justify-center items-center post-body'>{post && <HtmlRender htmlString={post.data.content} />}</div>
+    <div className='p-5 flex justify-center items-center post-body w-3/4 mx-auto'>{post && <HtmlRender htmlString={post.data.content} />}</div>
     </>
     
   )

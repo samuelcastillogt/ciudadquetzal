@@ -44,7 +44,22 @@ h2{
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  align-items: center;;
+  align-items: center;
+  position: relative;
+}
+.menu{
+  position: absolute;
+  right: 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu-img{
+  width: 100%;
+}
+.menu:hover{
+  cursor: pointer;
 }
 .header img{
   width: 75px;
