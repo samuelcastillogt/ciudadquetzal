@@ -16,7 +16,7 @@ function BusinesPage({data}: any) {
     </Head>
     <div className='flex justify-around items-center p-5 flex-wrap h-full'>
         <img src={data.imagen} className='w-1/2'/>
-        <div className='w-1/2 p-5'>
+        <div className=' p-5'>
           <p className='text-2xl font-bold'>{data.nombre}</p>
           <p>{data.descripcion}</p>
           <p>Categoria: {data.categoria}</p>
