@@ -10,24 +10,15 @@ function HtmlRender({ htmlString }:any) {
 }
 export async function getServerSideProps(datal:any){
   const data = await apiService.getPosts()
-  return { props: { data }}
+  const result = data.find((i:any)=> i.data.id == datal.query.post)
+      const match = result.data.content.match(/<p>(.*?)<\/p>/i)
+      const descripcion = match[1].replace(/<\/?[^>]+(>|$)/g, "")
+      const response = {desc: descripcion, post: result}
+
+  return { props: { data: response }}
 }
 function Post({data}:any) {
-  const route = useParams()
-  const [post, setPost] = useState<any>(undefined)
-  const [desc, setDesc] = useState<string>("Bienvenidos al Blog sobre Ciudad Quetzal.")
-  useEffect(() => {
-    if(data.length > 0){
-      const result = data.find((i:any)=> i.data.id == route.post)
-      if(result){
-        const match = result.data.content.match(/<p>(.*?)<\/p>/i)
-        const descripcion = match[1].replace(/<\/?[^>]+(>|$)/g, "")
-        setDesc(descripcion)
-        setPost(result)
-      }
-
-    }
-  }, [])
+  const {desc, post} = data
   return (
     <>
     <Head>
