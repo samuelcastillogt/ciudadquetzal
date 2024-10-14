@@ -13,15 +13,13 @@ export async function getServerSideProps(datal:any){
   const result = data.find((i:any)=> i.data.id == datal.query.post)
       const match = result.data.content.match(/<p>(.*?)<\/p>/i)
       const descripcion = match[1].replace(/<\/?[^>]+(>|$)/g, "")
-      const regex = /<img[^>]+src="([^">]+)"/;
-      const img = regex.exec(result.content);
-      const response = {desc: descripcion, post: result, img: img? img[1] : ""}
+      const response = {desc: descripcion, post: result}
 
   return { props: { data: response }}
 }
 function Post({data}:any) {
   const route = useParams()
-  const {desc, post, img} = data
+  const {desc, post} = data
   // const [post, setPost] = useState<any>(undefined)
   // const [desc, setDesc] = useState<string>("Bienvenidos al Blog sobre Ciudad Quetzal.")
   // useEffect(() => {
@@ -41,7 +39,7 @@ function Post({data}:any) {
     <Head>
       <title>{post && post.data.title}</title>
       <meta name="description" content={post && desc}/>
-      <link rel='image_src' href={img}/>
+      <link rel='image_src' href={post.img}/>
     </Head>
     <div className='p-5 flex justify-center items-center post-body w-3/4 mx-auto'>{post && <HtmlRender htmlString={post.data.content} />}</div>
     </>
