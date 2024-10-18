@@ -8,6 +8,7 @@ export default function Document() {
   return (
     <Html lang="es">
            <Head>
+           <link rel="icon" href="/divisa.png" />
            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5314398130823639"
      crossOrigin="anonymous"></script>
         <script
