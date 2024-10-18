@@ -8,6 +8,8 @@ export default function Document() {
   return (
     <Html lang="es">
            <Head>
+           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5314398130823639"
+     crossOrigin="anonymous"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
