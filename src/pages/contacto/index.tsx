@@ -8,7 +8,7 @@ function index() {
         <title>Contactanos</title>
         <meta name="description" content="Contactanos para obtener mas inforcacion sobre colaboraciones." />
     </Head>
-        <div className='flex justify-center items-center flex-col p-5'>
+        <div className='flex justify-center items-center flex-col p-5 w-full'>
           <h2>Gracias por desear contactarnos.</h2>
           <form action="https://formsubmit.co/e48c3885996d64ec008d6871eb94b147" method="POST" className='flex justify-center items-center flex-col p-5'>
           {/* <div className='flex justify-center items-center flex-col p-5'> */}
