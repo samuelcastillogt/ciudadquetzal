@@ -14,7 +14,7 @@ function index() {
           {/* <div className='flex justify-center items-center flex-col p-5'> */}
             <input type="text" placeholder='Nombre' className='border-black border-2 rounded-lg p-2 w-96' name="nombre"/>
             <input type="email" placeholder='Email' className='border-black border-2 rounded-lg p-2 w-96' name="email"/>
-            <textarea name="mensaje" placeholder='Mensaje' className='border-black border-2 rounded-lg p-2 w-96' id="" cols="30" rows="5"></textarea>
+            <textarea name="mensaje" placeholder='Mensaje' className='border-black border-2 rounded-lg p-2 w-96' id="" cols={30} rows={5}></textarea>
             <button className='border-black border-2 rounded-lg p-2 w-96 bg-green-800 text-white' type='submit'>Enviar</button>
             <input type="hidden" name="_next" value="https://ciudadquetzal.com"></input>
             {/* <input type="hidden" name="_captcha" value="false"></input> */}
