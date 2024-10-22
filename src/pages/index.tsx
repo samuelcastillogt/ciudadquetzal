@@ -3,6 +3,9 @@ import localFont from "next/font/local";
 import Hero from "@/components/Hero";
 import Slider from "@/components/Slider";
 import Header from "@/components/Header";
+import { apiService } from "@/services/api.service";
+import BlogCard from "@/components/BlogCard";
+import Head from "next/head";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,8 +34,17 @@ const data = [
     url: "/blog",
   },
 ];
-export default function Home() {
+export async function getServerSideProps(){
+  const data:any = await apiService.getPosts()
+  return { props: { dataPosts: data }}
+}
+export default function Home({dataPosts}: any) {
   return (
+    <>
+    <Head>
+      <title>Ciudad Quetzal</title>
+      <meta name="description" content="Sitio web no oficial sobre Ciudad Quetzal" />
+    </Head>
     <div className={`${geistSans.variable} ${geistMono.variable}`}>
       <Slider posts={data} />
       <div className="p-5 text-center">
@@ -158,7 +170,14 @@ export default function Home() {
         <p className="text-2xl font-bold text-center">
           ¡Descubre todo lo que Ciudad Quetzal tiene para ofrecer!
         </p>
+        <div className="flex flex-wrap items-center justify-center">
+          {
+            dataPosts.length > 0 && dataPosts.map((i:any) => <BlogCard data={i} key={i.id}/> )
+          }
+        </div>
       </div>
     </div>
+    </>
+    
   );
 }

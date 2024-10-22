@@ -11,6 +11,8 @@ function NaveMenu() {
         {window.location.pathname != "/" && <Link href="/" onClick={()=> setMenu(false)}>Inicio</Link>}
         <Link href="/blog" onClick={()=> setMenu(false)}>Blog</Link>
         <Link href="/mercadito" onClick={()=> setMenu(false)}>Mercadito</Link>
+        <Link href="/equipo" onClick={()=> setMenu(false)}>Acerca de Nosotros</Link>
+        <Link href="/contacto" onClick={()=> setMenu(false)}>Contacto</Link>
         <IoMdCloseCircleOutline color={"red"} size={40} onClick={()=> setMenu(false)} style={{"cursor":"pointer", "margin": "20px 0"}}/>
 
     </div>

@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import NaveMenu from "@/components/NaveMenu";
 import { apiService } from "@/services/api.service";
@@ -17,12 +18,11 @@ export default function App({ Component, pageProps }: AppProps) {
     setBusines(dataBusiness)
     setCategories(data)
 }
-console.log(posts, busines, categories)
 useEffect(() => {
   if(posts.length == 0 || busines.length== 0 || categories.length== 0){
     getData()
   }
     
 },[])
-  return <><Header/>{menu == true && <NaveMenu />}<Component {...pageProps} /></>;
+  return <><Header/>{menu == true && <NaveMenu />}<Component {...pageProps} /><Footer /> </>;
 }
