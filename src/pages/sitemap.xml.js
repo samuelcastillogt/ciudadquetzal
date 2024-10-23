@@ -17,7 +17,7 @@ export async function getServerSideProps({ res }) {
         .map((url) => {
           return `
             <url>
-              <loc>${`https://ciudadquetzal.com/blog/${url.data.id}`}</loc>
+              <loc>${`https://www.ciudadquetzal.com/blog/${url.data.id}`}</loc>
               <lastmod>${url.data.updated}</lastmod>
               <changefreq>${'monthly'}</changefreq>
               <priority>${'1.0'}</priority>
