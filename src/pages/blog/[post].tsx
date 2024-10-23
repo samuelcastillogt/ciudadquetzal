@@ -20,6 +20,7 @@ export async function getServerSideProps(datal:any){
 function Post({data}:any) {
   const route = useParams()
   const {desc, post} = data
+  console.log(data)
   return (
     <>
     <Head>
