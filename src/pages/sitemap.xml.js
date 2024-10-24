@@ -9,7 +9,7 @@ export async function getServerSideProps({ res }) {
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
     <loc>${`https://www.ciudadquetzal.com`}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
+    <lastmod>2024-10-18T13:13:46-07:00</lastmod>
     <changefreq>${'monthly'}</changefreq>
     <priority>${'1.0'}</priority>
   </url>
