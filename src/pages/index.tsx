@@ -26,11 +26,11 @@ const data = [
   {
     title: "Imprenta aqui en la Quetzal",
     img: "https://gestagrup.com/wp-content/uploads/2017/02/imprenta-barcelona.jpg",
-    url: "#",
+    url: "https://www.ciudadquetzal.com/mercadito/sprKwS6U4LzT2azblKRA",
   },
   {
     title: "Nuestro Blog",
-    img: "https://gestagrup.com/wp-content/uploads/2017/02/imprenta-barcelona.jpg",
+    img: "https://img.freepik.com/vector-gratis/propietario-pequena-empresa-dandose-mano-prestamista_74855-20379.jpg",
     url: "/blog",
   },
 ];

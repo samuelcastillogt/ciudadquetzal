@@ -25,7 +25,7 @@ function Slider(props:ISlider) {
     }, [timer])
   return (
     <Link href={post.url}>
-        <div className='slider'>
+        <div className='slider flex justify-center items-center'>
         <div className="slider-card" style={{backgroundImage: `url(${post.img})`, backgroundSize: "cover", backgroundPosition: "center"}}>
         <p className='bg-[rgba(256,256,256,0.5)] p-5 font-bold'>{posts[timer].title}</p>
         </div>
