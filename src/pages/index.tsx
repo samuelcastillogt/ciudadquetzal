@@ -62,7 +62,7 @@ export default function Home({dataPosts}: any) {
       <title>Ciudad Quetzal</title>
       <meta name="description" content="Sitio web no oficial sobre Ciudad Quetzal" />
     </Head>
-    <script
+    {/* <script
           dangerouslySetInnerHTML={{
             __html: `
             <script type="application/ld+json">
@@ -71,12 +71,12 @@ export default function Home({dataPosts}: any) {
               "@type": "WebSite",
               "name": "Ciudad Quetzal",
               "alternateName": "Sitio web sobre Ciudad Quetzal",
-              "url": "https://avesexoticas.org"
+              "url": "https://www.ciudadquetzal.com"
             } 
             </script>        
             `,
           }}
-        />
+        /> */}
     <div className={`${geistSans.variable} ${geistMono.variable}`}>
       <Slider posts={data} />
       <div className="p-5 text-center">
