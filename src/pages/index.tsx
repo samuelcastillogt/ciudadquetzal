@@ -1,4 +1,4 @@
-import Image from "next/image";
+import type {WebSite, Graph} from 'schema-dts';
 import localFont from "next/font/local";
 import Hero from "@/components/Hero";
 import Slider from "@/components/Slider";
@@ -34,6 +34,23 @@ const data = [
     url: "/blog",
   },
 ];
+const GGraph: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.ciudadquetzal.com',
+      url: 'https://www.ciudadquetzal.com/',
+      name: "Pagina sobre Ciudad Quetzal, un colonia de Guatemala en crecimiento",
+      inLanguage: 'es',
+      isPartOf: {
+        '@id': 'https://www.ciudadquetzal.com',
+      },
+      about: {'@id': 'https://www.ciudadquetzal.com/equipo'},
+      mainEntity: {'@id': 'https://www.ciudadquetzal.com/'},
+    },
+  ],
+};
 export async function getServerSideProps(){
   const data:any = await apiService.getPosts()
   return { props: { dataPosts: data }}
@@ -45,6 +62,21 @@ export default function Home({dataPosts}: any) {
       <title>Ciudad Quetzal</title>
       <meta name="description" content="Sitio web no oficial sobre Ciudad Quetzal" />
     </Head>
+    <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            <script type="application/ld+json">
+            {
+              "@context": "http://schema.org",
+              "@type": "WebSite",
+              "name": "Ciudad Quetzal",
+              "alternateName": "Sitio web sobre Ciudad Quetzal",
+              "url": "https://avesexoticas.org"
+            } 
+            </script>        
+            `,
+          }}
+        />
     <div className={`${geistSans.variable} ${geistMono.variable}`}>
       <Slider posts={data} />
       <div className="p-5 text-center">
