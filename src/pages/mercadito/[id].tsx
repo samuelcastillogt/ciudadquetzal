@@ -13,6 +13,7 @@ function BusinesPage({data}: any) {
         <meta name="description" content={data.descripcion}/>
         <meta name="keywords" content={data.descripcion} />
         <link rel='image_src' href={data.imagen}/>
+        <link rel='cannonical' href={'https://www.ciudadquetzal.com/mercadito/' + data.id} />
     </Head>
     <div className='flex justify-around items-center p-5 flex-wrap h-full'>
         <img src={data.imagen} className='w-1/2'/>

@@ -61,6 +61,7 @@ export default function Home({dataPosts}: any) {
     <Head>
       <title>Ciudad Quetzal</title>
       <meta name="description" content="Sitio web no oficial sobre Ciudad Quetzal" />
+      <link rel="cannonical" href='https://www.ciudadquetzal.com'/>
     </Head>
     {/* <script
           dangerouslySetInnerHTML={{
@@ -204,7 +205,7 @@ export default function Home({dataPosts}: any) {
         </p>
         <div className="flex flex-wrap items-center justify-center">
           {
-            dataPosts.length > 0 && dataPosts.map((i:any) => <BlogCard data={i} key={i.id}/> )
+            dataPosts.length > 0 && dataPosts.map((i:any) => <BlogCard data={i} key={i.data.id}/> )
           }
         </div>
       </div>

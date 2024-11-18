@@ -20,15 +20,14 @@ export async function getServerSideProps(datal:any){
   return { props: { data: response }}
 }
 function Post({data}:any) {
-  const route = useParams()
   const {desc, post, rels} = data
-console.log(post)
   return (
     <>
     <Head>
       <title>{post && post.data.title}</title>
       <meta name="description" content={post && desc}/>
       <link rel='image_src' href={post.img}/>
+      <link rel='cannonical' href={'https://www.ciudadquetzal.com/blog/' + post.data.id} />
     </Head>
     
     <div className='p-5 flex flex-col justify-center items-center post-body w-3/4 mx-auto border-b-4'>
