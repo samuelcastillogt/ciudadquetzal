@@ -6,6 +6,7 @@ export async function getServerSideProps(datal:any){
     return { props: { data }}
 }
 function BusinesPage({data}: any) {
+  
   return (
     <>
     <Head>
