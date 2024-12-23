@@ -4,7 +4,7 @@ import { IBusinessCard } from './BusinessCard'
 function BusinesAdCard(props:IBusinessCard) {
     const {data, id} = props
     return (
-      <div className='w-full border-2 m-3 flex items-center justify-around'>
+      <div className='w-full border-2 flex items-center justify-around'>
           <img src={data.imagen} className='w-32'/>
           <div className='p-5'>
               <p>{data.nombre}</p>
