@@ -17,7 +17,7 @@ export async function getServerSideProps(datal:any){
   const match = result.data.content.match(/<p>(.*?)<\/p>/i)
   const descripcion = match != undefined ? match[1].replace(/<\/?[^>]+(>|$)/g, "") : "Conoce un poco mas sobre Ciudad Quetzal en nuestra web."
   const response = {desc: descripcion, post: result, rels}
-
+console.log(data)
   return { props: { data: response }}
 }
 function Post({data}:any) {

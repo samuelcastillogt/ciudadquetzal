@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import { apiService } from "@/services/api.service";
 import BlogCard from "@/components/BlogCard";
 import Head from "next/head";
+import { useEffect } from 'react';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -52,10 +53,22 @@ const GGraph: Graph = {
   ],
 };
 export async function getServerSideProps(){
-  const data:any = await apiService.getPosts()
-  return { props: { dataPosts: data }}
+  const dataPosts:any = await apiService.getPosts()
+  return { props: { dataPosts }}
 }
 export default function Home({dataPosts}: any) {
+console.log(data)
+useEffect(()=>{
+  dataPosts.map((item:any, index:any) =>{
+    if(index < 3){
+        data.push({
+        title: item.data.title,
+        img: item.img,
+        url: "/blog/" + item.data.id
+      })
+    }
+  })
+},[])
   return (
     <>
     <Head>
