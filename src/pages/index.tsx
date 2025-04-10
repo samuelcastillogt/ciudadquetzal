@@ -213,7 +213,7 @@ useEffect(()=>{
           </div>
         </div>
 
-        <p className="text-2xl font-bold text-center">
+        <p className="text-2xl font-bold text-center p-5">
           ¡Descubre todo lo que Ciudad Quetzal tiene para ofrecer!
         </p>
         <div className="flex flex-wrap items-center justify-center">
