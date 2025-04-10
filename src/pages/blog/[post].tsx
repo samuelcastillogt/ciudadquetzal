@@ -17,7 +17,6 @@ export async function getServerSideProps(datal:any){
   const match = result.data.content.match(/<p>(.*?)<\/p>/i)
   const descripcion = match != undefined ? match[1].replace(/<\/?[^>]+(>|$)/g, "") : "Conoce un poco mas sobre Ciudad Quetzal en nuestra web."
   const response = {desc: descripcion, post: result, rels}
-console.log(data)
   return { props: { data: response }}
 }
 function Post({data}:any) {
@@ -39,6 +38,7 @@ function Post({data}:any) {
     </Head>
     
     <div className='p-5 flex flex-col justify-center items-center post-body w-3/4 mx-auto border-b-4'>
+      <h1>{post && post.data.title}</h1>
       {post && <HtmlRender htmlString={post.data.content} />}
 
       <div className="fb-share-button" data-href={"https://www.ciudadquetzal.com/blog/" + post.data.id} data-layout="" data-size=""><a target="_blank" href={"https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ciudadquetzal.com%2Fblog%2F" + post.data.id} className="fb-xfbml-parse-ignore"><img src="https://www.gsrefriaire.com/wp-content/uploads/2017/09/comparte_face.png" className='w-32'/></a></div>
