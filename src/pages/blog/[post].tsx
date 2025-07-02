@@ -59,8 +59,17 @@ function Post({ data }: any) {
 
       <h2 className='text-center'>Post Relacionados</h2>
 
-      <div className='flex flex-nowrap overflow-x-scroll p-5  w-3/4 mx-auto md:flex-wrap md:justify-center md:items-center ' >
-        {rels.map((i: any, index: number) => { if (index <= 2) { return <BlogCard data={i} key={i.img} /> } })}
+      <div
+        className="flex flex-nowrap gap-4 overflow-x-auto p-5 w-full max-w-5xl mx-auto md:flex-wrap md:justify-center md:items-center"
+        id="container"
+      >
+        {rels.map((i: any, index: number) =>
+          index <= 2 ? (
+            <div className="min-w-[260px] max-w-xs flex-shrink-0 md:flex-shrink md:w-80">
+              <BlogCard data={i} key={i.img} />
+            </div>
+          ) : null
+        )}
       </div>
     </>
 

@@ -2,7 +2,6 @@ import type {WebSite, Graph} from 'schema-dts';
 import localFont from "next/font/local";
 import Hero from "@/components/Hero";
 import Slider from "@/components/Slider";
-import Header from "@/components/Header";
 import { apiService } from "@/services/api.service";
 import BlogCard from "@/components/BlogCard";
 import Head from "next/head";
@@ -57,173 +56,85 @@ export async function getServerSideProps(){
   return { props: { dataPosts }}
 }
 export default function Home({dataPosts}: any) {
-console.log(data)
-useEffect(()=>{
-  dataPosts.map((item:any, index:any) =>{
-    if(index < 3){
-        data.push({
-        title: item.data.title,
-        img: item.img,
-        url: "/blog/" + item.data.id
-      })
-    }
-  })
-},[])
   return (
     <>
-    <Head>
-      <title>Ciudad Quetzal</title>
-      <meta name="description" content="Sitio web no oficial sobre Ciudad Quetzal" />
-      <link rel="cannonical" href='https://www.ciudadquetzal.com'/>
-    </Head>
-    {/* <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            <script type="application/ld+json">
-            {
-              "@context": "http://schema.org",
-              "@type": "WebSite",
-              "name": "Ciudad Quetzal",
-              "alternateName": "Sitio web sobre Ciudad Quetzal",
-              "url": "https://www.ciudadquetzal.com"
-            } 
-            </script>        
-            `,
-          }}
-        /> */}
-    <div className={`${geistSans.variable} ${geistMono.variable}`}>
-      <Slider posts={data} />
-      <div className="p-5 text-center">
-        <p>
-          Bienvenidos a <b>CiudadQuetzal.com</b> una pagina para mostrar nuestra
-          cultura, tradiciones y valores.{" "}
-        </p>
-        <p>
-          <b>Ciudad Quetzal</b> es una vibrante comunidad situada al norte del
-          departamento de Guatemala. Conocida por su cercanía a la naturaleza y
-          su ambiente tranquilo, esta colonia ha crecido rápidamente en los
-          últimos años, convirtiéndose en un lugar ideal para familias y
-          emprendedores que buscan un espacio en desarrollo y conexión con el
-          entorno urbano.
-        </p>
-        <div className="flex flex-wrap items-center justify-center">
-          <img
-            src="https://blogger.googleusercontent.com/img/a/AVvXsEgAhc2-RWsoS1iyMcxE-TUShIOhY04jCsy9FhSgCSqszOYq3d1rS9RkllKWPJspTwvHMLIjk9gQCaD4SG1pQ-1SRLSzWOf7Lj7TLgtP47stoiRXsJv6TzeAOS6Ab4exyWJS2Za7RGcV0zI5DNT1iBJ9gtdxTkE2uAFv9hv2TPRacvPSWbeN7l9sVTNVzTo"
-            alt="ciudad quetzal"
-            title="ciudad quetzal"
-          />
-          <div className="p-5 w-80">
-            <h2>Ubicación Estratégica de Ciudad Quetzal</h2>
-            <p>
-              Ubicada a solo 30 kilómetros de la Ciudad de Guatemala,{" "}
-              <b>Ciudad Quetzal</b> ofrece una excelente conexión con la
-              capital, haciendo que los desplazamientos sean rápidos y cómodos.
-              Su cercanía a importantes vías de comunicación la convierte en una
-              opción atractiva para quienes desean vivir en un entorno más
-              natural, pero con fácil acceso a los servicios y oportunidades de
-              la ciudad.
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-wrap items-center justify-center">
-          <div className="p-5 w-80">
-            <h2>Historia y Desarrollo de Ciudad Quetzal</h2>
-            <p>
-              Originalmente una pequeña aldea, Ciudad Quetzal ha experimentado
-              un notable crecimiento en las últimas dos décadas. Hoy en día,
-              cuenta con una infraestructura básica que sigue en expansión,
-              gracias a proyectos comunitarios y apoyo municipal. Este constante
-              desarrollo ha mejorado la calidad de vida de sus habitantes,
-              atrayendo nuevos residentes y negocios.
-            </p>
-          </div>
-          <img
-            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE3RXYcSigthFTraDQV3w-uBP6hG9yN3M8eaMg7yPxGl9i79_cQrln1E2mjCIBLw501zfNnuokJn39NfY3ANZ42YjNxddikR_5O-z7mf2TuvgevKZwp7Q44CL_Wyey9gSxPqcAkZL7zz0/s0/ciudad+quetzal.jpg"
-            alt="ciudad quetzal"
-            title="ciudad quetzal"
-          />
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center">
-          <img
-            src="https://blogger.googleusercontent.com/img/a/AVvXsEhkk6mV5IBIAgEWs5-sHCe65r74A_UVXFtJdaCM2Q67zIL-zpnRZ7KLjYuWvpOqa1dFke12H-ZjsqpDTz4rajkojCYxQ-qOyVCcWGDoAVBIkuPvPrXO7ifXCjEs9F-nq6e58rAfyPz7jjTvLUutSv5ed3ncOVwfiLfCmT1uPpWHymmCWxagn07s7lPwj5g"
-            alt="ciudad quetzal"
-            title="ciudad quetzal"
-          />
-          <div className="p-5 w-80">
-            <h2>Atractivos de Ciudad Quetzal</h2>
-            <p>
-              Rodeada de paisajes naturales y áreas verdes, Ciudad Quetzal es
-              ideal para quienes disfrutan de la tranquilidad del campo. Entre
-              sus principales atractivos están los senderos para caminatas, la
-              proximidad a montañas y la fauna local. Además, la comunidad
-              organiza ferias locales y actividades culturales, fortaleciendo el
-              sentido de pertenencia entre sus residentes.
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-wrap items-center justify-center">
-          <div className="p-5 w-80">
-            <h2>Vivienda y Oportunidades en Ciudad Quetzal</h2>
-            <p>
-              Ciudad Quetzal ofrece una variedad de opciones de vivienda a
-              precios accesibles. Tanto casas familiares como terrenos en venta
-              están disponibles para quienes buscan un nuevo hogar o inversión.
-              Además, las oportunidades de emprendimiento están en aumento, con
-              nuevos comercios y servicios que comienzan a establecerse en la
-              zona.
-            </p>
-          </div>
-          <img
-            src="https://blogger.googleusercontent.com/img/a/AVvXsEjxshslqEZdMdbvjNEhu_Sj1orSpQrjjxRIjvCbbi6a_Z_yAmmB0ZU9Dh79Qe6c6wmztvuBJphJkMfL-1QPTrgkKCxiXwBAbwdBGj6v34s5zLHmWaAr8vTTVdEmnWbXTy0T8b1MmtMmV-aEZ4yDjTNAwe4in4tlOfwOE6GIWdgY8iT8iuHNPoQQhaSYUXY"
-            alt="ciudad quetzal"
-            title="ciudad quetzal"
-          />
-        </div>
-
-        <img
-          src="https://blogger.googleusercontent.com/img/a/AVvXsEinvsGCZJYJTiE6CFKLp4Wm5QDo4Xj0oCbKHYqNpiLk7bZh76TJqWhqPD0UNm-b34rJ84ZQzFYwOHedKlrJ_fOCH3ehZfT2lSjekqTbp43TGeVCIvpKxfFsGAq6dHdHi7Y8--31aJ6OZb2AwclAPJjUfJwXJb35vJ39losKLhOsLDyVC6r3foa4l131d0Y"
-          alt="ciudad quetzal"
-          title="ciudad quetzal"
-          style={{ display: "flex", margin: "0 auto", padding: "5px" }}
-        />
-
-        <h2>Servicios Disponibles en Ciudad Quetzal</h2>
-        <p>
-          A medida que crece, <b>Ciudad Quetzal</b> ha visto un aumento en la
-          oferta de servicios esenciales. Actualmente, la comunidad cuenta con
-          escuelas, centros de salud, tiendas de conveniencia y transporte
-          público eficiente, lo que facilita la vida diaria de sus habitantes.
-        </p>
-        <div className="flex flex-wrap items-center justify-center">
-          <img
-            src="https://blogger.googleusercontent.com/img/a/AVvXsEgaU0PhV050VDvEWScsi57rPvEHbTGZ8oUY1lvvWBU2imPzXGGE6NYpzfPZadzuW5CLszW-hSfpq69Rxq61vFTPnULhWASXmE27wpkTsGmUT4Cn8gQavUVuGv45gydf_uBm-CzHVls91xGx38GJV8-v8DHIHk9C10N25iqHv4E_E7In4za42-tx-2gsZbQ"
-            alt="ciudad quetzal"
-            title="ciudad quetzal"
-          />
-          <div className="p-5 w-80">
-            <h2>Un Futuro Prometedor</h2>
-            <p>
-              <b>Ciudad Quetzal</b> se perfila como una de las colonias con
-              mayor potencial de desarrollo en la región. Con planes de mejora
-              en infraestructura y una comunidad activa en su progreso, esta
-              colonia ofrece un entorno prometedor para quienes buscan calidad
-              de vida y oportunidades de crecimiento.
-            </p>
-          </div>
-        </div>
-
-        <p className="text-2xl font-bold text-center p-5">
-          ¡Descubre todo lo que Ciudad Quetzal tiene para ofrecer!
-        </p>
-        <div className="flex flex-wrap items-center justify-center">
-          {
-            dataPosts.length > 0 && dataPosts.map((i:any) => <BlogCard data={i} key={i.data.id}/> )
-          }
-        </div>
+      <Head>
+        <title>Ciudad Quetzal</title>
+        <meta name="description" content="Sitio web no oficial sobre Ciudad Quetzal" />
+        <link rel="canonical" href="https://www.ciudadquetzal.com" />
+      </Head>
+      <div className={`${geistSans.variable} ${geistMono.variable}`}>
+        <main className="container mx-auto max-w-4xl py-8 px-4">
+          <Slider posts={data} />
+          <section className="mb-12 text-center">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary">Bienvenidos a CiudadQuetzal.com</h1>
+            <p className="text-lg md:text-xl text-gray-700 mb-6">Un espacio para descubrir la cultura, tradiciones y oportunidades de nuestra comunidad.</p>
+            <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
+              <img
+                src="https://blogger.googleusercontent.com/img/a/AVvXsEgAhc2-RWsoS1iyMcxE-TUShIOhY04jCsy9FhSgCSqszOYq3d1rS9RkllKWPJspTwvHMLIjk9gQCaD4SG1pQ-1SRLSzWOf7Lj7TLgtP47stoiRXsJv6TzeAOS6Ab4exyWJS2Za7RGcV0zI5DNT1iBJ9gtdxTkE2uAFv9hv2TPRacvPSWbeN7l9sVTNVzTo"
+                alt="Ciudad Quetzal"
+                className="rounded-lg shadow-md w-full md:w-72"
+              />
+              <div className="text-left max-w-md">
+                <h2 className="text-2xl font-bold mb-2 text-primary">Ubicación Estratégica</h2>
+                <p className="text-gray-600">A solo 30 km de la Ciudad de Guatemala, Ciudad Quetzal ofrece una excelente conexión con la capital y un entorno natural ideal para familias y emprendedores.</p>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
+              <div className="text-left max-w-md">
+                <h2 className="text-2xl font-bold mb-2 text-primary">Historia y Desarrollo</h2>
+                <p className="text-gray-600">De aldea a comunidad en crecimiento, Ciudad Quetzal ha mejorado su infraestructura y calidad de vida gracias al esfuerzo de sus habitantes y proyectos comunitarios.</p>
+              </div>
+              <img
+                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE3RXYcSigthFTraDQV3w-uBP6hG9yN3M8eaMg7yPxGl9i79_cQrln1E2mjCIBLw501zfNnuokJn39NfY3ANZ42YjNxddikR_5O-z7mf2TuvgevKZwp7Q44CL_Wyey9gSxPqcAkZL7zz0/s0/ciudad+quetzal.jpg"
+                alt="Historia Ciudad Quetzal"
+                className="rounded-lg shadow-md w-full md:w-72"
+              />
+            </div>
+            <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
+              <img
+                src="https://blogger.googleusercontent.com/img/a/AVvXsEhkk6mV5IBIAgEWs5-sHCe65r74A_UVXFtJdaCM2Q67zIL-zpnRZ7KLjYuWvpOqa1dFke12H-ZjsqpDTz4rajkojCYxQ-qOyVCcWGDoAVBIkuPvPrXO7ifXCjEs9F-nq6e58rAfyPz7jjTvLUutSv5ed3ncOVwfiLfCmT1uPpWHymmCWxagn07s7lPwj5g"
+                alt="Atractivos Ciudad Quetzal"
+                className="rounded-lg shadow-md w-full md:w-72"
+              />
+              <div className="text-left max-w-md">
+                <h2 className="text-2xl font-bold mb-2 text-primary">Atractivos Naturales</h2>
+                <p className="text-gray-600">Disfruta de senderos, áreas verdes y actividades culturales que fortalecen el sentido de comunidad y la calidad de vida.</p>
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
+              <div className="text-left max-w-md">
+                <h2 className="text-2xl font-bold mb-2 text-primary">Vivienda y Oportunidades</h2>
+                <p className="text-gray-600">Opciones de vivienda accesibles y oportunidades de emprendimiento hacen de Ciudad Quetzal un lugar ideal para invertir y crecer.</p>
+              </div>
+              <img
+                src="https://blogger.googleusercontent.com/img/a/AVvXsEjxshslqEZdMdbvjNEhu_Sj1orSpQrjjxRIjvCbbi6a_Z_yAmmB0ZU9Dh79Qe6c6wmztvuBJphJkMfL-1QPTrgkKCxiXwBAbwdBGj6v34s5zLHmWaAr8vTTVdEmnWbXTy0T8b1MmtMmV-aEZ4yDjTNAwe4in4tlOfwOE6GIWdgY8iT8iuHNPoQQhaSYUXY"
+                alt="Vivienda Ciudad Quetzal"
+                className="rounded-lg shadow-md w-full md:w-72"
+              />
+            </div>
+            <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
+              <img
+                src="https://blogger.googleusercontent.com/img/a/AVvXsEgaU0PhV050VDvEWScsi57rPvEHbTGZ8oUY1lvvWBU2imPzXGGE6NYpzfPZadzuW5CLszW-hSfpq69Rxq61vFTPnULhWASXmE27wpkTsGmUT4Cn8gQavUVuGv45gydf_uBm-CzHVls91xGx38GJV8-v8DHIHk9C10N25iqHv4E_E7In4za42-tx-2gsZbQ"
+                alt="Futuro Ciudad Quetzal"
+                className="rounded-lg shadow-md w-full md:w-72"
+              />
+              <div className="text-left max-w-md">
+                <h2 className="text-2xl font-bold mb-2 text-primary">Un Futuro Prometedor</h2>
+                <p className="text-gray-600">La comunidad y sus proyectos de infraestructura hacen de Ciudad Quetzal una colonia con gran potencial de desarrollo y calidad de vida.</p>
+              </div>
+            </div>
+            <p className="text-2xl font-bold text-center p-5 text-primary">¡Descubre todo lo que Ciudad Quetzal tiene para ofrecer!</p>
+          </section>
+          <section id="blog-container">
+            <h2 className="text-3xl font-bold mb-6 text-primary text-center">Últimos Artículos del Blog</h2>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              {dataPosts.length > 0 && dataPosts.map((i:any) => <BlogCard data={i} key={i.data.id}/> )}
+            </div>
+          </section>
+        </main>
       </div>
-    </div>
     </>
-    
   );
 }
+
