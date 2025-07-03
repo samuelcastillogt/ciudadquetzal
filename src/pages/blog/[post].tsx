@@ -4,6 +4,7 @@ import { apiService } from '@/services/api.service';
 import { useStore } from '@/store'
 import Head from 'next/head';
 import { useRouter, useParams } from 'next/navigation'
+import { useEffect as useViewEffect } from 'react';
 import React, { useEffect, useState } from 'react'
 function HtmlRender({ htmlString }: any) {
   return (
@@ -28,6 +29,13 @@ function Post({ data }: any) {
       setAd(busines[Math.round(Math.random() * ((busines.length - 1) - 0))])
     }
   }, [busines])
+
+  // View Transition API para animar el cambio de página
+  useViewEffect(() => {
+    if (typeof window !== 'undefined' && document.startViewTransition) {
+      document.startViewTransition(() => {});
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -36,9 +44,9 @@ function Post({ data }: any) {
         <link rel='image_src' href={post.img} />
         <link rel='cannonical' href={'https://www.ciudadquetzal.com/blog/' + post.data.id} />
       </Head>
-      <div className="relative bg-cover bg-center h-48 flex justify-center items-center" style={{ backgroundImage: `url(${post.img})` }}>
+      <div className="relative bg-cover bg-center h-48 flex justify-center items-center transition-all duration-500 view-transition-image" style={{ backgroundImage: `url(${post.img})` }}>
         <div className="absolute inset-0 backdrop-filter backdrop-blur-md"></div>
-        <h1 className='text-white text-center text-4xl font-bold z-40 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>{post && post.data.title}</h1>
+        <h1 className='text-white text-center text-4xl font-bold z-40 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] transition-all duration-500 view-transition-text'>{post && post.data.title}</h1>
       </div>
 
 

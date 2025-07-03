@@ -1,3 +1,27 @@
+/* View Transition para imágenes y texto */
+.view-transition-image, .view-transition-text {
+  view-transition-name: fade-image;
+}
+@keyframes fade-image-enter {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fade-image-exit {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-40px) scale(0.98); }
+}
+
+::view-transition-old(fade-image),
+::view-transition-new(fade-image) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.4,0,0.2,1);
+}
+::view-transition-old(fade-image) {
+  animation-name: fade-image-exit;
+}
+::view-transition-new(fade-image) {
+  animation-name: fade-image-enter;
+}
 @keyframes slide-left {
   0% {
     transform: translateX(0);
