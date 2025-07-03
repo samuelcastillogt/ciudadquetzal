@@ -49,10 +49,11 @@
   --radius: 0.75rem;
 }
 
+/* Forzar tema claro siempre */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #22223b;
-    --foreground: #f8fafc;
+    --background: #f8fafc;
+    --foreground: #22223b;
     --primary: #436850;
     --accent: #4ecdc4;
   }

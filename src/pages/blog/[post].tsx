@@ -43,6 +43,70 @@ function Post({ data }: any) {
         <meta name="description" content={post && desc} />
         <link rel='image_src' href={post.img} />
         <link rel='cannonical' href={'https://www.ciudadquetzal.com/blog/' + post.data.id} />
+        <style>{`
+          .post-body p {
+            margin-bottom: 1.2em;
+            color: #22223b;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            font-family: 'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+          }
+          .post-body h1, .post-body h2, .post-body h3 {
+            color: #436850;
+            font-weight: 700;
+            margin: 1.5em 0 0.7em 0;
+            font-family: 'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+          }
+          .post-body h1 { font-size: 2.2rem; }
+          .post-body h2 { font-size: 1.7rem; }
+          .post-body h3 { font-size: 1.3rem; }
+          .post-body ul, .post-body ol {
+            margin: 1em 0 1em 2em;
+            color: #22223b;
+            font-size: 1.1rem;
+          }
+          .post-body li {
+            margin-bottom: 0.5em;
+          }
+          .post-body img {
+            max-width: 100%;
+            border-radius: 0.75rem;
+            margin: 1.5em auto;
+            display: block;
+            box-shadow: 0 2px 12px rgba(67,104,80,0.08);
+          }
+          .post-body blockquote {
+            border-left: 4px solid #4ecdc4;
+            background: #f8fafc;
+            color: #22223b;
+            padding: 1em 1.5em;
+            margin: 1.5em 0;
+            font-style: italic;
+            border-radius: 0.5em;
+          }
+          .post-body a {
+            color: #4ecdc4;
+            text-decoration: underline;
+            transition: color 0.2s;
+          }
+          .post-body a:hover {
+            color: #22223b;
+          }
+          .post-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            background: #fff;
+            border-radius: 0.5em;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(67,104,80,0.08);
+          }
+          .post-body th, .post-body td {
+            padding: 0.75em 1em;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+          }
+        `}</style>
       </Head>
       <div className="relative bg-cover bg-center h-48 flex justify-center items-center transition-all duration-500 view-transition-image" style={{ backgroundImage: `url(${post.img})` }}>
         <div className="absolute inset-0 backdrop-filter backdrop-blur-md"></div>
