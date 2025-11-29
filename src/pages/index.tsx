@@ -67,7 +67,10 @@ export default function Home({dataPosts}: any) {
     const tryPush = () => {
       try {
         const width = node.clientWidth || 0;
-        if (width > 0 && !pushed) {
+        const ins = node.querySelector && node.querySelector('ins.adsbygoogle');
+        const status = ins && (ins as HTMLElement).getAttribute('data-adsbygoogle-status');
+        // Only push if we have width and the ins hasn't been filled yet
+        if (width > 0 && !pushed && status !== 'done') {
           (window as any).adsbygoogle = (window as any).adsbygoogle || [];
           (window as any).adsbygoogle.push({});
           pushed = true;
@@ -103,7 +106,9 @@ export default function Home({dataPosts}: any) {
       const tryPush = () => {
         try {
           const width = node.clientWidth || 0;
-          if (width > 0 && !pushed) {
+          const ins = node.querySelector && node.querySelector('ins.adsbygoogle');
+          const status = ins && (ins as HTMLElement).getAttribute('data-adsbygoogle-status');
+          if (width > 0 && !pushed && status !== 'done') {
             (window as any).adsbygoogle = (window as any).adsbygoogle || [];
             (window as any).adsbygoogle.push({});
             pushed = true;
