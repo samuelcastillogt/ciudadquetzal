@@ -30,6 +30,16 @@ function Post({ data }: any) {
     }
   }, [busines])
 
+  // Inicializar adsbygoogle para bloques in-article en esta página (cliente)
+  useEffect(() => {
+    try {
+      (window as any).adsbygoogle = (window as any).adsbygoogle || [];
+      (window as any).adsbygoogle.push({});
+    } catch (e) {
+      console.warn('Adsense init error on post page', e);
+    }
+  }, []);
+
   // View Transition API para animar el cambio de página
   useViewEffect(() => {
     if (typeof window !== 'undefined' && document.startViewTransition) {
@@ -119,6 +129,18 @@ function Post({ data }: any) {
 
         </div>
         {post && <HtmlRender htmlString={post.data.content} />}
+
+        {/* AdSense in-article (post) */}
+        <div className="my-6 w-full flex justify-center">
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block', textAlign: 'center' }}
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-5314398130823639"
+            data-ad-slot="7377125003"
+          ></ins>
+        </div>
 
         <div className="fb-share-button BlogCard" data-href={"https://www.ciudadquetzal.com/blog/" + post.data.id} data-layout="" data-size=""><a target="_blank" href={"https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ciudadquetzal.com%2Fblog%2F" + post.data.id} className="fb-xfbml-parse-ignore"><img src="https://www.gsrefriaire.com/wp-content/uploads/2017/09/comparte_face.png" className='w-32' /></a></div>
         <div className='m-1'>

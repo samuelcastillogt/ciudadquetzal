@@ -56,6 +56,14 @@ export async function getServerSideProps(){
   return { props: { dataPosts }}
 }
 export default function Home({dataPosts}: any) {
+  useEffect(() => {
+    try {
+      (window as any).adsbygoogle = (window as any).adsbygoogle || [];
+      (window as any).adsbygoogle.push({});
+    } catch (e) {
+      console.warn('Adsense initialization error', e);
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -128,6 +136,17 @@ export default function Home({dataPosts}: any) {
           </section>
           <section id="blog-container">
             <h2 className="text-3xl font-bold mb-6 text-primary text-center">Últimos Artículos del Blog</h2>
+            {/* AdSense in-article */}
+            <div className="my-6">
+              <ins
+                className="adsbygoogle"
+                style={{ display: 'block', textAlign: 'center' }}
+                data-ad-layout="in-article"
+                data-ad-format="fluid"
+                data-ad-client="ca-pub-5314398130823639"
+                data-ad-slot="7377125003"
+              ></ins>
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-6">
               {dataPosts.length > 0 && dataPosts.map((i:any) => <BlogCard data={i} key={i.data.id}/> )}
             </div>
