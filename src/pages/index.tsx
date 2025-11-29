@@ -6,6 +6,7 @@ import { apiService } from "@/services/api.service";
 import BlogCard from "@/components/BlogCard";
 import Head from "next/head";
 import { useEffect, useRef } from 'react';
+import { useAdSlot } from '@/hooks/useAdSlot';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -56,82 +57,9 @@ export async function getServerSideProps(){
   return { props: { dataPosts }}
 }
 export default function Home({dataPosts}: any) {
-  const adContainerRef = useRef<HTMLDivElement | null>(null);
-
-  // Inicializar adsbygoogle solo cuando el contenedor tenga ancho > 0
-  useEffect(() => {
-    const node = adContainerRef.current;
-    if (!node) return;
-    let pushed = false;
-
-    const tryPush = () => {
-      try {
-        const width = node.clientWidth || 0;
-        const ins = node.querySelector && node.querySelector('ins.adsbygoogle');
-        const status = ins && (ins as HTMLElement).getAttribute('data-adsbygoogle-status');
-        // Only push if we have width and the ins hasn't been filled yet
-        if (width > 0 && !pushed && status !== 'done') {
-          (window as any).adsbygoogle = (window as any).adsbygoogle || [];
-          (window as any).adsbygoogle.push({});
-          pushed = true;
-        }
-      } catch (e) {
-        console.warn('Adsense initialization error', e);
-      }
-    };
-
-    tryPush();
-
-    let ro: ResizeObserver | null = null;
-    let intervalId: number | null = null;
-    if (!pushed && typeof ResizeObserver !== 'undefined') {
-      ro = new ResizeObserver(() => tryPush());
-      ro.observe(node);
-    }
-    if (!pushed && typeof window !== 'undefined') {
-      intervalId = window.setInterval(() => tryPush(), 500);
-    }
-    return () => {
-      if (ro) ro.disconnect();
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, []);
-
-    // Segundo bloque: anuncio responsive full-width (ciudadQuetzalTest)
-    const adResponsiveRef = useRef<HTMLDivElement | null>(null);
-    useEffect(() => {
-      const node = adResponsiveRef.current;
-      if (!node) return;
-      let pushed = false;
-      const tryPush = () => {
-        try {
-          const width = node.clientWidth || 0;
-          const ins = node.querySelector && node.querySelector('ins.adsbygoogle');
-          const status = ins && (ins as HTMLElement).getAttribute('data-adsbygoogle-status');
-          if (width > 0 && !pushed && status !== 'done') {
-            (window as any).adsbygoogle = (window as any).adsbygoogle || [];
-            (window as any).adsbygoogle.push({});
-            pushed = true;
-          }
-        } catch (e) {
-          console.warn('Adsense initialization error (responsive)', e);
-        }
-      };
-      tryPush();
-      let ro: ResizeObserver | null = null;
-      let intervalId: number | null = null;
-      if (!pushed && typeof ResizeObserver !== 'undefined') {
-        ro = new ResizeObserver(() => tryPush());
-        ro.observe(node);
-      }
-      if (!pushed && typeof window !== 'undefined') {
-        intervalId = window.setInterval(() => tryPush(), 500);
-      }
-      return () => {
-        if (ro) ro.disconnect();
-        if (intervalId) clearInterval(intervalId);
-      };
-    }, []);
+  // Usamos solo un bloque responsive y el hook centralizado para inicializarlo
+  const adResponsiveRef = useRef<HTMLDivElement | null>(null);
+  useAdSlot(adResponsiveRef);
   return (
     <>
       <Head>
@@ -204,19 +132,7 @@ export default function Home({dataPosts}: any) {
           </section>
           <section id="blog-container">
             <h2 className="text-3xl font-bold mb-6 text-primary text-center">Últimos Artículos del Blog</h2>
-            {/* AdSense in-article */}
-            <div className="my-6" ref={adContainerRef}>
-              <ins
-                className="adsbygoogle"
-                style={{ display: 'block', textAlign: 'center' }}
-                data-ad-layout="in-article"
-                data-ad-format="fluid"
-                data-ad-client="ca-pub-5314398130823639"
-                data-ad-slot="7377125003"
-              ></ins>
-            </div>
-
-            {/* Bloque responsive full-width: ciudadQuetzalTest */}
+            {/* Bloque responsive full-width: ciudadQuetzalTest (único anuncio en home) */}
             <div className="my-6 w-full" ref={adResponsiveRef}>
               <ins
                 className="adsbygoogle"

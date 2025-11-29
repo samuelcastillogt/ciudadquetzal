@@ -5,8 +5,7 @@ import { useStore } from '@/store'
 import Head from 'next/head';
 import { useRouter, useParams } from 'next/navigation'
 import { useEffect as useViewEffect } from 'react';
-import React, { useEffect, useRef, useState } from 'react'
-import { useAdSlot } from '@/hooks/useAdSlot';
+import React, { useEffect, useState } from 'react'
 function HtmlRender({ htmlString }: any) {
   return (
     <div dangerouslySetInnerHTML={{ __html: htmlString }} />
@@ -31,9 +30,7 @@ function Post({ data }: any) {
     }
   }, [busines])
 
-  const adContainerRef = useRef<HTMLDivElement | null>(null);
-  // Hook centralizado para inicializar el slot de AdSense de forma segura
-  useAdSlot(adContainerRef);
+  // Removed AdSense slot from post page (ads moved/disabled for posts)
 
   // View Transition API para animar el cambio de página
   useViewEffect(() => {
@@ -125,17 +122,7 @@ function Post({ data }: any) {
         </div>
         {post && <HtmlRender htmlString={post.data.content} />}
 
-        {/* AdSense in-article (post) */}
-        <div className="my-6 w-full flex justify-center" ref={adContainerRef}>
-          <ins
-            className="adsbygoogle"
-            style={{ display: 'block', textAlign: 'center' }}
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-5314398130823639"
-            data-ad-slot="7377125003"
-          ></ins>
-        </div>
+        {/* Ads removed from post page per request */}
 
         <div className="fb-share-button BlogCard" data-href={"https://www.ciudadquetzal.com/blog/" + post.data.id} data-layout="" data-size=""><a target="_blank" href={"https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ciudadquetzal.com%2Fblog%2F" + post.data.id} className="fb-xfbml-parse-ignore"><img src="https://www.gsrefriaire.com/wp-content/uploads/2017/09/comparte_face.png" className='w-32' /></a></div>
         <div className='m-1'>
