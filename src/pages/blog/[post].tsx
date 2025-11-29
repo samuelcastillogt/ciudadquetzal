@@ -5,7 +5,7 @@ import { useStore } from '@/store'
 import Head from 'next/head';
 import { useRouter, useParams } from 'next/navigation'
 import { useEffect as useViewEffect } from 'react';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 function HtmlRender({ htmlString }: any) {
   return (
     <div dangerouslySetInnerHTML={{ __html: htmlString }} />
@@ -30,14 +30,47 @@ function Post({ data }: any) {
     }
   }, [busines])
 
-  // Inicializar adsbygoogle para bloques in-article en esta página (cliente)
+  const adContainerRef = useRef<HTMLDivElement | null>(null);
+
+  // Inicializar adsbygoogle cuando el contenedor tenga un ancho mayor a 0.
   useEffect(() => {
-    try {
-      (window as any).adsbygoogle = (window as any).adsbygoogle || [];
-      (window as any).adsbygoogle.push({});
-    } catch (e) {
-      console.warn('Adsense init error on post page', e);
+    const node = adContainerRef.current;
+    if (!node) return;
+    let pushed = false;
+
+    const tryPush = () => {
+      try {
+        const width = node.clientWidth || 0;
+        if (width > 0 && !pushed) {
+          (window as any).adsbygoogle = (window as any).adsbygoogle || [];
+          (window as any).adsbygoogle.push({});
+          pushed = true;
+        }
+      } catch (e) {
+        console.warn('Adsense init error on post page', e);
+      }
+    };
+
+    // Intento inmediato
+    tryPush();
+
+    // Observador de tamaño (mejor) y fallback por intervalo
+    let ro: ResizeObserver | null = null;
+    let intervalId: number | null = null;
+
+    if (!pushed && typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(() => tryPush());
+      ro.observe(node);
     }
+
+    if (!pushed && typeof window !== 'undefined') {
+      intervalId = window.setInterval(() => tryPush(), 500);
+    }
+
+    return () => {
+      if (ro) ro.disconnect();
+      if (intervalId) clearInterval(intervalId);
+    };
   }, []);
 
   // View Transition API para animar el cambio de página
@@ -131,7 +164,7 @@ function Post({ data }: any) {
         {post && <HtmlRender htmlString={post.data.content} />}
 
         {/* AdSense in-article (post) */}
-        <div className="my-6 w-full flex justify-center">
+        <div className="my-6 w-full flex justify-center" ref={adContainerRef}>
           <ins
             className="adsbygoogle"
             style={{ display: 'block', textAlign: 'center' }}
