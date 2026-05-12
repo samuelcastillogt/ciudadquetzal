@@ -33,9 +33,9 @@ function Slider(props: ISlider) {
 
   return (
     <Link href={post.url}>
-      <div className="slider flex justify-center items-center py-6">
+      <div className="slider flex items-center justify-center py-6">
         <div
-          className={`slider-card relative w-full max-w-2xl h-56 md:h-72 rounded-2xl overflow-hidden shadow-lg border border-gray-200 transition-transform duration-300 ease-in-out ${animate ? 'animate-slide-left' : ''}`}
+          className={`slider-card relative h-56 w-full max-w-2xl overflow-hidden border border-[#e0e0e0] transition-transform duration-300 ease-in-out md:h-72 ${animate ? 'animate-slide-left' : ''}`}
           style={{
             backgroundImage: `url(${post.img})`,
             backgroundSize: "cover",
@@ -44,7 +44,7 @@ function Slider(props: ISlider) {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
           <div className="relative z-20 flex items-end h-full w-full">
-            <p className="text-white text-2xl md:text-3xl font-extrabold p-6 drop-shadow-lg w-full text-left">
+            <p className="w-full p-6 text-left text-2xl text-white md:text-3xl">
               {posts[timer].title}
             </p>
           </div>

@@ -1,12 +1,13 @@
 .slider-card{
     width: 80%;
     height: 250px;
-    border-radius: 10px;
+    border-radius: 0;
     display: flex;
     justify-content: end;
     align-items: end;
     padding: 20px;
-    box-shadow: 12px 12px 10px 4px rgba(0, 0, 0, .2);
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
 }
 .slider{
     width: 100%;
@@ -16,7 +17,7 @@
     align-items: center;
     padding: 20px;
 
-};
+}
 .slider-card-title{
     font-size: 15px;
     background-color: rgba(0,0,0,0.5);

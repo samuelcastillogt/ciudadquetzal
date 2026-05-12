@@ -13,9 +13,9 @@ function NaveMenu() {
     { href: '/contacto', label: 'Contacto' },
   ];
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[rgba(67,104,80,0.97)] backdrop-blur-md">
-      <div className="bg-white/90 rounded-2xl shadow-xl px-8 py-10 flex flex-col items-center gap-6 border border-primary min-w-[260px]">
-        <h2 className="text-primary text-3xl font-extrabold mb-2 tracking-tight">Secciones</h2>
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[rgba(0,0,0,0.9)]">
+      <div className="flex min-w-[260px] flex-col items-center gap-6 border border-[#e0e0e0] bg-white px-8 py-10">
+        <h2 className="mb-2 text-3xl tracking-tight text-black">Secciones</h2>
         <nav className="flex flex-col gap-4 w-full">
           {links.map(link => (
             (link.href !== '/' || window.location.pathname !== '/') && (
@@ -23,7 +23,7 @@ function NaveMenu() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenu(false)}
-                className="text-lg md:text-xl font-semibold text-primary hover:text-accent transition px-4 py-2 rounded-lg hover:bg-accent/10 text-center"
+                className="px-4 py-2 text-center text-lg text-black transition hover:bg-black hover:text-white md:text-xl"
               >
                 {link.label}
               </Link>
@@ -33,7 +33,7 @@ function NaveMenu() {
         <button
           aria-label="Cerrar menú"
           onClick={() => setMenu(false)}
-          className="mt-4 flex items-center gap-2 text-red-600 hover:text-white hover:bg-red-600 transition px-4 py-2 rounded-full border border-red-200 bg-white/80 shadow"
+          className="mt-4 flex items-center gap-2 border border-black bg-black px-4 py-2 text-white transition hover:opacity-85"
         >
           <IoMdCloseCircleOutline size={32} />
           <span className="hidden md:inline font-semibold">Cerrar</span>

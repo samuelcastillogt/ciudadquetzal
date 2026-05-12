@@ -1,6 +1,5 @@
 import type {WebSite, Graph} from 'schema-dts';
 import localFont from "next/font/local";
-import Hero from "@/components/Hero";
 import Slider from "@/components/Slider";
 import { apiService } from "@/services/api.service";
 import BlogCard from "@/components/BlogCard";
@@ -68,70 +67,70 @@ export default function Home({dataPosts}: any) {
         <link rel="canonical" href="https://www.ciudadquetzal.com" />
       </Head>
       <div className={`${geistSans.variable} ${geistMono.variable}`}>
-        <main className="container mx-auto max-w-4xl py-8 px-4">
+        <main className="container mx-auto max-w-6xl px-5 py-8">
           <Slider posts={data} />
           <section className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary">Bienvenidos a CiudadQuetzal.com</h1>
-            <p className="text-lg md:text-xl text-gray-700 mb-6">Un espacio para descubrir la cultura, tradiciones y oportunidades de nuestra comunidad.</p>
+            <h1 className="mb-4 text-4xl md:text-5xl">Bienvenidos a CiudadQuetzal.com</h1>
+            <p className="mb-6 text-lg md:text-xl">Un espacio para descubrir la cultura, tradiciones y oportunidades de nuestra comunidad.</p>
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
               <img
                 src="https://blogger.googleusercontent.com/img/a/AVvXsEgAhc2-RWsoS1iyMcxE-TUShIOhY04jCsy9FhSgCSqszOYq3d1rS9RkllKWPJspTwvHMLIjk9gQCaD4SG1pQ-1SRLSzWOf7Lj7TLgtP47stoiRXsJv6TzeAOS6Ab4exyWJS2Za7RGcV0zI5DNT1iBJ9gtdxTkE2uAFv9hv2TPRacvPSWbeN7l9sVTNVzTo"
                 alt="Ciudad Quetzal"
-                className="rounded-lg shadow-md w-full md:w-72"
+                className="w-full md:w-72"
               />
               <div className="text-left max-w-md">
-                <h2 className="text-2xl font-bold mb-2 text-primary">Ubicación Estratégica</h2>
-                <p className="text-gray-600">A solo 30 km de la Ciudad de Guatemala, Ciudad Quetzal ofrece una excelente conexión con la capital y un entorno natural ideal para familias y emprendedores.</p>
+                <h2 className="mb-2 text-2xl">Ubicacion Estrategica</h2>
+                <p>A solo 30 km de la Ciudad de Guatemala, Ciudad Quetzal ofrece una excelente conexion con la capital y un entorno natural ideal para familias y emprendedores.</p>
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
               <div className="text-left max-w-md">
-                <h2 className="text-2xl font-bold mb-2 text-primary">Historia y Desarrollo</h2>
-                <p className="text-gray-600">De aldea a comunidad en crecimiento, Ciudad Quetzal ha mejorado su infraestructura y calidad de vida gracias al esfuerzo de sus habitantes y proyectos comunitarios.</p>
+                <h2 className="mb-2 text-2xl">Historia y Desarrollo</h2>
+                <p>De aldea a comunidad en crecimiento, Ciudad Quetzal ha mejorado su infraestructura y calidad de vida gracias al esfuerzo de sus habitantes y proyectos comunitarios.</p>
               </div>
               <img
                 src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE3RXYcSigthFTraDQV3w-uBP6hG9yN3M8eaMg7yPxGl9i79_cQrln1E2mjCIBLw501zfNnuokJn39NfY3ANZ42YjNxddikR_5O-z7mf2TuvgevKZwp7Q44CL_Wyey9gSxPqcAkZL7zz0/s0/ciudad+quetzal.jpg"
                 alt="Historia Ciudad Quetzal"
-                className="rounded-lg shadow-md w-full md:w-72"
+                className="w-full md:w-72"
               />
             </div>
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
               <img
                 src="https://blogger.googleusercontent.com/img/a/AVvXsEhkk6mV5IBIAgEWs5-sHCe65r74A_UVXFtJdaCM2Q67zIL-zpnRZ7KLjYuWvpOqa1dFke12H-ZjsqpDTz4rajkojCYxQ-qOyVCcWGDoAVBIkuPvPrXO7ifXCjEs9F-nq6e58rAfyPz7jjTvLUutSv5ed3ncOVwfiLfCmT1uPpWHymmCWxagn07s7lPwj5g"
                 alt="Atractivos Ciudad Quetzal"
-                className="rounded-lg shadow-md w-full md:w-72"
+                className="w-full md:w-72"
               />
               <div className="text-left max-w-md">
-                <h2 className="text-2xl font-bold mb-2 text-primary">Atractivos Naturales</h2>
-                <p className="text-gray-600">Disfruta de senderos, áreas verdes y actividades culturales que fortalecen el sentido de comunidad y la calidad de vida.</p>
+                <h2 className="mb-2 text-2xl">Atractivos Naturales</h2>
+                <p>Disfruta de senderos, areas verdes y actividades culturales que fortalecen el sentido de comunidad y la calidad de vida.</p>
               </div>
             </div>
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
               <div className="text-left max-w-md">
-                <h2 className="text-2xl font-bold mb-2 text-primary">Vivienda y Oportunidades</h2>
-                <p className="text-gray-600">Opciones de vivienda accesibles y oportunidades de emprendimiento hacen de Ciudad Quetzal un lugar ideal para invertir y crecer.</p>
+                <h2 className="mb-2 text-2xl">Vivienda y Oportunidades</h2>
+                <p>Opciones de vivienda accesibles y oportunidades de emprendimiento hacen de Ciudad Quetzal un lugar ideal para invertir y crecer.</p>
               </div>
               <img
                 src="https://blogger.googleusercontent.com/img/a/AVvXsEjxshslqEZdMdbvjNEhu_Sj1orSpQrjjxRIjvCbbi6a_Z_yAmmB0ZU9Dh79Qe6c6wmztvuBJphJkMfL-1QPTrgkKCxiXwBAbwdBGj6v34s5zLHmWaAr8vTTVdEmnWbXTy0T8b1MmtMmV-aEZ4yDjTNAwe4in4tlOfwOE6GIWdgY8iT8iuHNPoQQhaSYUXY"
                 alt="Vivienda Ciudad Quetzal"
-                className="rounded-lg shadow-md w-full md:w-72"
+                className="w-full md:w-72"
               />
             </div>
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center mb-8">
               <img
                 src="https://blogger.googleusercontent.com/img/a/AVvXsEgaU0PhV050VDvEWScsi57rPvEHbTGZ8oUY1lvvWBU2imPzXGGE6NYpzfPZadzuW5CLszW-hSfpq69Rxq61vFTPnULhWASXmE27wpkTsGmUT4Cn8gQavUVuGv45gydf_uBm-CzHVls91xGx38GJV8-v8DHIHk9C10N25iqHv4E_E7In4za42-tx-2gsZbQ"
                 alt="Futuro Ciudad Quetzal"
-                className="rounded-lg shadow-md w-full md:w-72"
+                className="w-full md:w-72"
               />
               <div className="text-left max-w-md">
-                <h2 className="text-2xl font-bold mb-2 text-primary">Un Futuro Prometedor</h2>
-                <p className="text-gray-600">La comunidad y sus proyectos de infraestructura hacen de Ciudad Quetzal una colonia con gran potencial de desarrollo y calidad de vida.</p>
+                <h2 className="mb-2 text-2xl">Un Futuro Prometedor</h2>
+                <p>La comunidad y sus proyectos de infraestructura hacen de Ciudad Quetzal una colonia con gran potencial de desarrollo y calidad de vida.</p>
               </div>
             </div>
-            <p className="text-2xl font-bold text-center p-5 text-primary">¡Descubre todo lo que Ciudad Quetzal tiene para ofrecer!</p>
+            <p className="p-5 text-center text-2xl text-black">Descubre todo lo que Ciudad Quetzal tiene para ofrecer.</p>
           </section>
           <section id="blog-container">
-            <h2 className="text-3xl font-bold mb-6 text-primary text-center">Últimos Artículos del Blog</h2>
+            <h2 className="mb-6 text-center text-3xl">Ultimos Articulos del Blog</h2>
             {/* Bloque responsive full-width: ciudadQuetzalTest (único anuncio en home) */}
             <div className="my-6 w-full" ref={adResponsiveRef}>
               <ins
@@ -152,4 +151,3 @@ export default function Home({dataPosts}: any) {
     </>
   );
 }
-
