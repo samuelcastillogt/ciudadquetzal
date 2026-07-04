@@ -13,7 +13,7 @@ function Footer() {
             <Link href="/equipo" className="text-sm tracking-[0.4px] hover:underline">Acerca de nosotros</Link>
           </li>
         </ul>
-        <p className="text-sm text-white/80">Una pagina de <a href="https://naughtydevgt.github.io/" className="hover:underline">Nauthy Dev</a> 2024</p>
+        <p className="text-sm text-white/80">Una pagina de <a href="https://naughtydevgt.github.io/" className="hover:underline text-white">Nauthy Dev</a> 2024</p>
       </div>
     </footer>
   );

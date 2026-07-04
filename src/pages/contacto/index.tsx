@@ -6,7 +6,7 @@ function index() {
     <>
     <Head>
         <title>Contactanos</title>
-        <meta name="description" content="Contactanos para obtener mas inforcacion sobre colaboraciones." />
+        <meta name="description" content="Contactanos para obtener mas informacion sobre colaboraciones." />
     </Head>
         <div className='flex justify-center items-center flex-col p-5 w-full'>
           <h2>Gracias por desear contactarnos.</h2>
@@ -21,6 +21,10 @@ function index() {
           
           {/* </div> */}
           </form>
+        <div className='flex justify-center items-center flex-col p-5'>
+          <h2>Tambien puedes contactarnos por:</h2>
+          <p>Correo: <a href="mailto:info@ciudadquetzal.com" className='text-blue-500 hover:underline'>info@ciudadquetzal.com</a></p>
+        </div>
         </div>
     </>
 
