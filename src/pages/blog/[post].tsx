@@ -14,7 +14,12 @@ function HtmlRender({ htmlString }: any) {
 export async function getServerSideProps(datal: any) {
   const data = await apiService.getPosts()
   const result = data.find((i: any) => i.data.id == datal.query.post)
-  const rels = data.filter((i: any) => i.data.labels[0] == result.data.labels[0])
+  if (!result) {
+    return {
+      notFound: true,
+    }
+  }
+  const rels = data.filter((i: any) => i.data.labels.length > 0 && i.data.labels[0] == result.data.labels[0] || "Varios")
   const match = result.data.content.match(/<p>(.*?)<\/p>/i)
   const descripcion = match != undefined ? match[1].replace(/<\/?[^>]+(>|$)/g, "") : "Conoce un poco mas sobre Ciudad Quetzal en nuestra web."
   const response = { desc: descripcion, post: result, rels }
