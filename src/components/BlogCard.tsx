@@ -17,6 +17,8 @@ function BlogCard(props: any) {
       <img
         src={data.img}
         alt={data.data?.title || 'Imagen del blog'}
+        loading="lazy"
+        decoding="async"
         className="h-48 w-full object-cover transition-all duration-500 view-transition-image"
       />
       <div className="flex flex-1 flex-col justify-between p-5">

@@ -1,17 +1,33 @@
 import BlogCard from '@/components/BlogCard'
 import { apiService } from '@/services/api.service'
-import { useStore } from '@/store'
-import React, { useEffect } from 'react'
+import Head from 'next/head'
 
-function index() {
-  const {posts} = useStore((state:any)=> state)
+export async function getServerSideProps() {
+  const posts = await apiService.getPosts()
+
+  return { props: { posts } }
+}
+
+function BlogIndex({ posts }: any) {
   return (
-    <div className='flex flex-wrap justify-around items-center p-5'>
-      {
-        posts.lenght == 0 && <p>Cargando</p> || posts.map((i:any)=><BlogCard data={i} key={i.data.id}/>)
-      }
-    </div>
+    <>
+      <Head>
+        <title>Blog | Ciudad Quetzal</title>
+        <meta name="description" content="Entradas recientes del blog de Ciudad Quetzal." />
+        <link rel="canonical" href="https://www.ciudadquetzal.com/blog" />
+      </Head>
+      <main className="container mx-auto max-w-6xl px-5 py-10">
+        <h1 className="mb-8 text-center text-4xl">Blog</h1>
+        {posts.length === 0 ? (
+          <p className="text-center">No hay entradas disponibles.</p>
+        ) : (
+          <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post: any) => <BlogCard data={post} key={post.data.id} />)}
+          </div>
+        )}
+      </main>
+    </>
   )
 }
 
-export default index
+export default BlogIndex

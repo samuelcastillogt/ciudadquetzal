@@ -4,7 +4,8 @@ import Slider from "@/components/Slider";
 import { apiService } from "@/services/api.service";
 import BlogCard from "@/components/BlogCard";
 import Head from "next/head";
-import { useEffect, useRef } from 'react';
+import Link from "next/link";
+import { useRef } from 'react';
 import { useAdSlot } from '@/hooks/useAdSlot';
 
 const geistSans = localFont({
@@ -59,6 +60,7 @@ export default function Home({dataPosts}: any) {
   // Usamos solo un bloque responsive y el hook centralizado para inicializarlo
   const adResponsiveRef = useRef<HTMLDivElement | null>(null);
   useAdSlot(adResponsiveRef);
+  const latestPosts = dataPosts.slice(0, 6);
   return (
     <>
       <Head>
@@ -143,7 +145,15 @@ export default function Home({dataPosts}: any) {
               ></ins>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              {dataPosts.length > 0 && dataPosts.map((i:any) => <BlogCard data={i} key={i.data.id}/> )}
+              {latestPosts.length > 0 && latestPosts.map((i:any) => <BlogCard data={i} key={i.data.id}/> )}
+            </div>
+            <div className="mt-8 flex justify-center">
+              <Link
+                href="/blog"
+                className="border border-black bg-black px-6 py-3 text-base font-bold text-white transition hover:bg-white hover:text-black"
+              >
+                Leer mas entradas
+              </Link>
             </div>
           </section>
         </main>
